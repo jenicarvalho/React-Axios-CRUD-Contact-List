@@ -13,20 +13,61 @@ class Person extends Component {
     });
   }
 
+  deleteContact(index) {
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/users/${index}`)
+      .then(res => {
+        console.log(res.data);
+
+        this.setState(state => {
+          const persons = state.persons.filter((item, j) => index !== j);
+          return {
+            persons
+          };
+        });
+      });
+  }
+
+  insertContact() {
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", {
+        name: "Jeniffer Carvalho",
+        phone: "55 19 9999-0000"
+      })
+      .then(res => {
+        this.setState(state => {
+          const persons = state.persons.concat(res.data);
+          return {
+            persons
+          };
+        });
+      });
+  }
+
   render() {
     return (
       <div className="person-list">
         <h1>Contact List</h1>
 
         <ul>
-          {this.state.persons.map(person => (
+          {this.state.persons.map((person, index) => (
             <li className="person-item" key={person.id}>
               <h2>
-                {person.name} <span>{person.phone}</span>
+                {person.name}
+                <span>{person.phone}</span>
+                <button
+                  className="delete"
+                  title="Delete"
+                  onClick={() => this.deleteContact(index)}
+                >
+                  X
+                </button>
               </h2>
             </li>
           ))}
         </ul>
+
+        <button onClick={() => this.insertContact()}>Add one</button>
       </div>
     );
   }
