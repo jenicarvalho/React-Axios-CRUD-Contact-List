@@ -67,7 +67,9 @@ class Person extends Component {
           ))}
         </ul>
 
-        <button onClick={() => this.insertContact()}>Add one</button>
+        <button className="add" onClick={() => this.insertContact()}>
+          Add One
+        </button>
       </div>
     );
   }
