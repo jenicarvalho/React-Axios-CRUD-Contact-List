@@ -22,4 +22,30 @@
 
 .person-item span {
   font-weight: 100;
+  margin: 0 10px;
+}
+
+.delete {
+  border: none;
+  background: transparent;
+  color: red;
+  cursor: pointer;
+}
+
+.add {
+  border: none;
+  padding: 8px;
+  background: #ff9800;
+  font-size: 15px;
+  color: #fff;
+  border-bottom: 2px solid #db8200;
+  transition: 0.2s top ease;
+  outline: none;
+  cursor: pointer;
+}
+
+.add:hover {
+  position: relative;
+  top: 2px;
+  border-bottom: none;
 }
