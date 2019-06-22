@@ -12,8 +12,10 @@
 }
 
 .person-item {
-  border-bottom: 1px solid #f4f4f4;
-  flex-basis: 50%;
+  border: 1px solid #f4f4f4;
+  flex-basis: 48%;
+  margin: 1px;
+  text-indent: 10px;
 }
 
 .person-item h2 {
@@ -27,8 +29,8 @@
 
 .delete {
   border: none;
-  background: transparent;
-  color: red;
+  background: red;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -48,4 +50,10 @@
   position: relative;
   top: 2px;
   border-bottom: none;
+}
+
+.show-more {
+  cursor: pointer;
+  text-align: center;
+  padding: 0 10px;
 }
