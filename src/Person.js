@@ -3,7 +3,14 @@ import axios from "axios";
 
 class Person extends Component {
   state = {
-    persons: []
+    persons: [],
+    showFullContent: false
+  };
+
+  toggleContent = () => {
+    this.setState({
+      showFullContent: !this.state.showFullContent
+    });
   };
 
   componentDidMount() {
@@ -47,7 +54,7 @@ class Person extends Component {
   render() {
     return (
       <div className="person-list">
-        <h1>Contact List</h1>
+        <h1>Contact List ☎️</h1>
 
         <ul>
           {this.state.persons.map((person, index) => (
@@ -60,9 +67,43 @@ class Person extends Component {
                   title="Delete"
                   onClick={() => this.deleteContact(index)}
                 >
-                  X
+                  &#10008;
                 </button>
+                <span className="show-more" onClick={this.toggleContent}>
+                  &#11206;
+                </span>
               </h2>
+
+              <table
+                className="person-full-content"
+                style={{
+                  display: this.state.showFullContent ? "block" : "none"
+                }}
+              >
+                <tbody>
+                  <tr>
+                    <td>
+                      Username <span>{person.username}</span>
+                    </td>
+                    <td>
+                      Email <span>{person.email}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Address
+                      <span>
+                        {person.address.street} {person.address.suite}{" "}
+                        {person.address.city}
+                      </span>
+                    </td>
+                    <td>
+                      Website
+                      <span>{person.company.name}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </li>
           ))}
         </ul>
