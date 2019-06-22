@@ -34,9 +34,10 @@
   cursor: pointer;
 }
 
-.add {
+.button {
   border: none;
   padding: 8px;
+  margin-right: 10px;
   background: #ff9800;
   font-size: 15px;
   color: #fff;
@@ -46,14 +47,8 @@
   cursor: pointer;
 }
 
-.add:hover {
+.button:hover {
   position: relative;
   top: 2px;
   border-bottom: none;
-}
-
-.show-more {
-  cursor: pointer;
-  text-align: center;
-  padding: 0 10px;
 }
