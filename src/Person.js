@@ -39,7 +39,18 @@ class Person extends Component {
     axios
       .post("https://jsonplaceholder.typicode.com/users", {
         name: "Jeniffer Carvalho",
-        phone: "55 19 9999-0000"
+        username: "jenicarvalho",
+        phone: "55 19 9999-0000",
+        email: "jenicarvalho@test.com",
+        address: {
+          street: "Kulas Light",
+          suite: "Apt. 556",
+          city: "Gwenborough",
+          zipcode: "92998-3874"
+        },
+        company: {
+          name: "Pixels"
+        }
       })
       .then(res => {
         this.setState(state => {
@@ -56,6 +67,14 @@ class Person extends Component {
       <div className="person-list">
         <h1>Contact List ☎️</h1>
 
+        <button className="button" onClick={() => this.insertContact()}>
+          Add One
+        </button>
+
+        <button className="button" onClick={this.toggleContent}>
+          Toggle Content
+        </button>
+
         <ul>
           {this.state.persons.map((person, index) => (
             <li className="person-item" key={person.id}>
@@ -69,9 +88,6 @@ class Person extends Component {
                 >
                   &#10008;
                 </button>
-                <span className="show-more" onClick={this.toggleContent}>
-                  &#11206;
-                </span>
               </h2>
 
               <table
@@ -107,10 +123,6 @@ class Person extends Component {
             </li>
           ))}
         </ul>
-
-        <button className="add" onClick={() => this.insertContact()}>
-          Add One
-        </button>
       </div>
     );
   }
